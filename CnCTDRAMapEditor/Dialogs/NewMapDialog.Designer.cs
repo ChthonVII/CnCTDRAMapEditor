@@ -56,6 +56,10 @@ namespace MobiusEditor.Dialogs
             this.radioTheater1 = new System.Windows.Forms.RadioButton();
             this.radioTheater2 = new System.Windows.Forms.RadioButton();
             this.radioTheater3 = new System.Windows.Forms.RadioButton();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            this.radioMapSize1 = new System.Windows.Forms.RadioButton();
+            this.radioMapSize2 = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -63,6 +67,8 @@ namespace MobiusEditor.Dialogs
             this.flowLayoutPanel3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.flowLayoutPanel4.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.flowLayoutPanel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -73,7 +79,7 @@ namespace MobiusEditor.Dialogs
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -91,7 +97,7 @@ namespace MobiusEditor.Dialogs
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(2, 295);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(352, 27);
             this.flowLayoutPanel1.TabIndex = 0;
@@ -101,7 +107,7 @@ namespace MobiusEditor.Dialogs
             this.btnCancel.AutoSize = true;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Location = new System.Drawing.Point(300, 2);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(50, 23);
             this.btnCancel.TabIndex = 1;
@@ -113,7 +119,7 @@ namespace MobiusEditor.Dialogs
             this.btnOK.AutoSize = true;
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOK.Location = new System.Drawing.Point(246, 2);
-            this.btnOK.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnOK.Margin = new System.Windows.Forms.Padding(2);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(50, 23);
             this.btnOK.TabIndex = 0;
@@ -124,10 +130,11 @@ namespace MobiusEditor.Dialogs
             // 
             this.flowLayoutPanel2.Controls.Add(this.groupBox1);
             this.flowLayoutPanel2.Controls.Add(this.groupBox2);
+            this.flowLayoutPanel2.Controls.Add(this.groupBox3);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(2, 2);
-            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(352, 289);
             this.flowLayoutPanel2.TabIndex = 1;
@@ -136,9 +143,9 @@ namespace MobiusEditor.Dialogs
             // 
             this.groupBox1.Controls.Add(this.flowLayoutPanel3);
             this.groupBox1.Location = new System.Drawing.Point(2, 2);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(339, 70);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
@@ -152,7 +159,7 @@ namespace MobiusEditor.Dialogs
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel3.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel3.Location = new System.Drawing.Point(2, 15);
-            this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
             this.flowLayoutPanel3.Size = new System.Drawing.Size(335, 53);
             this.flowLayoutPanel3.TabIndex = 0;
@@ -162,7 +169,7 @@ namespace MobiusEditor.Dialogs
             this.radioTD.AutoSize = true;
             this.radioTD.Checked = true;
             this.radioTD.Location = new System.Drawing.Point(2, 2);
-            this.radioTD.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radioTD.Margin = new System.Windows.Forms.Padding(2);
             this.radioTD.Name = "radioTD";
             this.radioTD.Size = new System.Drawing.Size(94, 17);
             this.radioTD.TabIndex = 0;
@@ -175,7 +182,7 @@ namespace MobiusEditor.Dialogs
             // 
             this.radioRA.AutoSize = true;
             this.radioRA.Location = new System.Drawing.Point(2, 23);
-            this.radioRA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radioRA.Margin = new System.Windows.Forms.Padding(2);
             this.radioRA.Name = "radioRA";
             this.radioRA.Size = new System.Drawing.Size(69, 17);
             this.radioRA.TabIndex = 1;
@@ -188,9 +195,9 @@ namespace MobiusEditor.Dialogs
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.flowLayoutPanel4);
             this.groupBox2.Location = new System.Drawing.Point(2, 76);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox2.Size = new System.Drawing.Size(339, 89);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
@@ -205,7 +212,7 @@ namespace MobiusEditor.Dialogs
             this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel4.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel4.Location = new System.Drawing.Point(2, 15);
-            this.flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
             this.flowLayoutPanel4.Size = new System.Drawing.Size(335, 72);
             this.flowLayoutPanel4.TabIndex = 0;
@@ -215,7 +222,7 @@ namespace MobiusEditor.Dialogs
             this.radioTheater1.AutoSize = true;
             this.radioTheater1.Checked = true;
             this.radioTheater1.Location = new System.Drawing.Point(2, 2);
-            this.radioTheater1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radioTheater1.Margin = new System.Windows.Forms.Padding(2);
             this.radioTheater1.Name = "radioTheater1";
             this.radioTheater1.Size = new System.Drawing.Size(56, 17);
             this.radioTheater1.TabIndex = 0;
@@ -227,7 +234,7 @@ namespace MobiusEditor.Dialogs
             // 
             this.radioTheater2.AutoSize = true;
             this.radioTheater2.Location = new System.Drawing.Point(2, 23);
-            this.radioTheater2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radioTheater2.Margin = new System.Windows.Forms.Padding(2);
             this.radioTheater2.Name = "radioTheater2";
             this.radioTheater2.Size = new System.Drawing.Size(76, 17);
             this.radioTheater2.TabIndex = 1;
@@ -238,13 +245,57 @@ namespace MobiusEditor.Dialogs
             // 
             this.radioTheater3.AutoSize = true;
             this.radioTheater3.Location = new System.Drawing.Point(2, 44);
-            this.radioTheater3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radioTheater3.Margin = new System.Windows.Forms.Padding(2);
             this.radioTheater3.Name = "radioTheater3";
             this.radioTheater3.Size = new System.Drawing.Size(56, 17);
             this.radioTheater3.TabIndex = 2;
             this.radioTheater3.TabStop = true;
             this.radioTheater3.Text = "Winter";
             this.radioTheater3.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.flowLayoutPanel5);
+            this.groupBox3.Location = new System.Drawing.Point(3, 170);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(336, 78);
+            this.groupBox3.TabIndex = 4;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Map Size";
+            // 
+            // flowLayoutPanel5
+            // 
+            this.flowLayoutPanel5.AutoSize = true;
+            this.flowLayoutPanel5.Controls.Add(this.radioMapSize1);
+            this.flowLayoutPanel5.Controls.Add(this.radioMapSize2);
+            this.flowLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel5.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel5.Location = new System.Drawing.Point(3, 16);
+            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
+            this.flowLayoutPanel5.Size = new System.Drawing.Size(330, 59);
+            this.flowLayoutPanel5.TabIndex = 0;
+            // 
+            // radioMapSize1
+            // 
+            this.radioMapSize1.AutoSize = true;
+            this.radioMapSize1.Checked = true;
+            this.radioMapSize1.Location = new System.Drawing.Point(3, 3);
+            this.radioMapSize1.Name = "radioMapSize1";
+            this.radioMapSize1.Size = new System.Drawing.Size(96, 17);
+            this.radioMapSize1.TabIndex = 0;
+            this.radioMapSize1.TabStop = true;
+            this.radioMapSize1.Text = "Normal (64x64)";
+            this.radioMapSize1.UseVisualStyleBackColor = true;
+            // 
+            // radioMapSize2
+            // 
+            this.radioMapSize2.AutoSize = true;
+            this.radioMapSize2.Location = new System.Drawing.Point(3, 26);
+            this.radioMapSize2.Name = "radioMapSize2";
+            this.radioMapSize2.Size = new System.Drawing.Size(122, 17);
+            this.radioMapSize2.TabIndex = 1;
+            this.radioMapSize2.Text = "Megamap (128x128)";
+            this.radioMapSize2.UseVisualStyleBackColor = true;
             // 
             // NewMapDialog
             // 
@@ -256,7 +307,7 @@ namespace MobiusEditor.Dialogs
             this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "NewMapDialog";
@@ -277,6 +328,10 @@ namespace MobiusEditor.Dialogs
             this.groupBox2.PerformLayout();
             this.flowLayoutPanel4.ResumeLayout(false);
             this.flowLayoutPanel4.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.flowLayoutPanel5.ResumeLayout(false);
+            this.flowLayoutPanel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -297,5 +352,9 @@ namespace MobiusEditor.Dialogs
         private System.Windows.Forms.RadioButton radioTheater1;
         private System.Windows.Forms.RadioButton radioTheater2;
         private System.Windows.Forms.RadioButton radioTheater3;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
+        private System.Windows.Forms.RadioButton radioMapSize1;
+        private System.Windows.Forms.RadioButton radioMapSize2;
     }
 }

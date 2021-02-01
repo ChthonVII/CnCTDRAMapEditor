@@ -45,6 +45,16 @@ namespace MobiusEditor.Dialogs
             }
         }
 
+        public string MapSize
+        {
+            get
+            {
+                if (radioMapSize1.Checked) return "Normal";
+                if (radioMapSize2.Checked) return "Megamap";
+                return null;
+            }
+        }
+
         public NewMapDialog()
         {
             InitializeComponent();
@@ -59,12 +69,14 @@ namespace MobiusEditor.Dialogs
                         radioTheater1.Text = "Desert";
                         radioTheater2.Text = "Temperate";
                         radioTheater3.Text = "Winter";
+                        groupBox3.Visible = true;   // MegaMap support
                     } break;
                 case GameType.RedAlert:
                     {
                         radioTheater1.Text = "Temperate";
                         radioTheater2.Text = "Snow";
                         radioTheater3.Text = "Interior";
+                        groupBox3.Visible = false;  // MegaMap support
                     }
                     break;
             }
