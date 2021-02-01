@@ -297,6 +297,51 @@ namespace MobiusEditor.Utility
             }
         }
 
+        public void ParseMapSize(TextReader reader)
+        {
+            bool mapSection = false;
+
+            while (true)
+            {
+                var line = reader.ReadLine();
+                if (line == null)
+                {
+                    break;
+                }
+
+                var m = INIHelpers.SectionRegex.Match(line);
+                if (m.Success && line.ToLower() == "[map]")
+                {
+                    mapSection = true;
+                } else if (m.Success && mapSection == true && line.ToLower() != "[map]")
+                {
+                    TiberianDawn.Constants.AlterMaxSize(64, 64);
+                    break;      // Found a section after the [Map] section, so set the Size back to normal and exit the while loop.
+                }
+
+                if (mapSection == true)
+                {
+                    if (INIHelpers.CommentRegex.Match(line).Success)
+                    {
+                        continue;   // Found a comment, so skip to the next line in the file.
+                    }
+
+                    var m2 = INIHelpers.KeyValueRegex.Match(line);
+                    if (m2.Success)     // Found a valid Map Key.
+                    {
+                        if (m2.Groups[1].Value == "MegaMap")    // Map Key is MegaMap.
+                        {
+                            if (m2.Groups[2].Value == "1")
+                            {
+                                TiberianDawn.Constants.AlterMaxSize(128, 128);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         public void Parse(string iniText)
         {
             using (var reader = new StringReader(iniText))
