@@ -79,10 +79,10 @@ namespace MobiusEditor.TiberianDawn
             basicSection.Player = houseTypes.First().Name;
 
             Map = new Map(basicSection, null, Constants.MaxSize, typeof(House),
-                houseTypes, TheaterTypes.GetTypes(), TemplateTypes.GetTypes(), TerrainTypes.GetTypes(),
-                OverlayTypes.GetTypes(), SmudgeTypes.GetTypes(), EventTypes.GetTypes(), ActionTypes.GetTypes(),
-                MissionTypes.GetTypes(), DirectionTypes.GetTypes(), InfantryTypes.GetTypes(), UnitTypes.GetTypes(),
-                BuildingTypes.GetTypes(), TeamMissionTypes.GetTypes(), waypoints, movieTypes)
+            houseTypes, TheaterTypes.GetTypes(), TemplateTypes.GetTypes(), TerrainTypes.GetTypes(),
+            OverlayTypes.GetTypes(), SmudgeTypes.GetTypes(), EventTypes.GetTypes(), ActionTypes.GetTypes(),
+            MissionTypes.GetTypes(), DirectionTypes.GetTypes(), InfantryTypes.GetTypes(), UnitTypes.GetTypes(),
+            BuildingTypes.GetTypes(), TeamMissionTypes.GetTypes(), waypoints, movieTypes)
             {
                 TiberiumOrGoldValue = 25
             };
