@@ -799,10 +799,10 @@ namespace MobiusEditor
                         {
                             try
                             {
-                                using (var reader = new StreamReader(loadFilename))
+                                using (var reader2 = new StreamReader(loadFilename))
                                 {
                                     var ini2 = new INI();
-                                    ini2.ParseMapSize(reader);
+                                    ini2.ParseMapSize(reader2);
                                 }
                             }
                             catch (FileNotFoundException)
@@ -810,6 +810,22 @@ namespace MobiusEditor
                                 return false;
                             }
                         }
+                        if (fileType == FileType.BIN)       // Megamap support, if we've been given a bin, look for the ini, then parse for Megamap flag.
+                        {
+                            try
+                            {
+                                using (var reader3 = new StreamReader(Path.ChangeExtension(loadFilename, ".ini")))
+                                {
+                                    var ini3 = new INI();
+                                    ini3.ParseMapSize(reader3);
+                                }
+                            }
+                            catch (FileNotFoundException)
+                            {
+                                return false;
+                            }
+                        }
+
                         Globals.TheTeamColorManager.Reset();
                         Globals.TheTeamColorManager.Load(@"DATA\XML\CNCTDTEAMCOLORS.XML");
                         plugin = new TiberianDawn.GamePlugin();

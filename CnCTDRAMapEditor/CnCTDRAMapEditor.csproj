@@ -57,6 +57,9 @@
   <PropertyGroup>
     <ApplicationIcon>Resources\GameIcon00.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyName>CnCTDRAMapEditorD</AssemblyName>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -577,7 +580,7 @@
     <PackageReference Include="System.ValueTuple">
       <Version>4.5.0</Version>
     </PackageReference>
-	<Reference Include="netstandard" />
+    <Reference Include="netstandard" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
