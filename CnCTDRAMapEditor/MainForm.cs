@@ -279,6 +279,19 @@ namespace MobiusEditor
                     Globals.TheTeamColorManager.Reset();
                     Globals.TheTeamColorManager.Load(@"DATA\XML\CNCTDTEAMCOLORS.XML");
 
+// MegaMap support
+                    switch (nmd.MapSize)
+                    {
+                        case "Normal":
+                        {
+                                TiberianDawn.Constants.AlterMaxSize(64, 64);
+                        } break;
+                        case "Megamap":
+                        {
+                                TiberianDawn.Constants.AlterMaxSize(128, 128);
+                        } break;
+                    }
+
                     plugin = new TiberianDawn.GamePlugin();
                     plugin.New(nmd.TheaterName);
                 }
@@ -782,6 +795,21 @@ namespace MobiusEditor
             {
                 case GameType.TiberianDawn:
                     {
+                        if (fileType == FileType.INI)       // Megamap support, check if filetype is ini, then parse for Megamap flag.
+                        {
+                            try
+                            {
+                                using (var reader = new StreamReader(loadFilename))
+                                {
+                                    var ini2 = new INI();
+                                    ini2.ParseMapSize(reader);
+                                }
+                            }
+                            catch (FileNotFoundException)
+                            {
+                                return false;
+                            }
+                        }
                         Globals.TheTeamColorManager.Reset();
                         Globals.TheTeamColorManager.Load(@"DATA\XML\CNCTDTEAMCOLORS.XML");
                         plugin = new TiberianDawn.GamePlugin();
