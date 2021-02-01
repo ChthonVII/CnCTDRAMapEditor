@@ -59,6 +59,11 @@ namespace MobiusEditor.Model
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+// Megamap support
+        private int megamap;
+        [DefaultValue(0)]
+        public int MegaMap { get => megamap; set => SetField(ref megamap, value); }
+
         private int x;
         [DefaultValue(0)]
         public int X { get => x; set => SetField(ref x, value); }
