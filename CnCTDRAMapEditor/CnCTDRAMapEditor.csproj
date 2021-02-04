@@ -58,7 +58,7 @@
     <ApplicationIcon>Resources\GameIcon00.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyName>CnCTDRAMapEditorD</AssemblyName>
+    <AssemblyName>CnCTDRAMapEditor</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

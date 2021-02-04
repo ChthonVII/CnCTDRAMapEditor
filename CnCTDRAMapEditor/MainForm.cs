@@ -309,6 +309,12 @@ namespace MobiusEditor
                     plugin.Map.BasicSection.Author = SteamFriends.GetPersonaName();
                 }
 
+// MegaMap support, this is the ini file flag in [MAP]. Needs to be set after the GamePlugin has been created.
+                if (nmd.MapSize == "Megamap")
+                {
+                    plugin.Map.MapSection.MegaMap = 1;
+                }
+
                 plugin.Map.Triggers.CollectionChanged += Triggers_CollectionChanged;
                 mapPanel.MapImage = plugin.MapImage;
 
