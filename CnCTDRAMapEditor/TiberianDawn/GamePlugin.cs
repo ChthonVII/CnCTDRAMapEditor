@@ -832,25 +832,72 @@ namespace MobiusEditor.TiberianDawn
         {
             Map.Templates.Clear();
 
-            for (var y = 0; y < Map.Metrics.Height; ++y)
+            //Megamap support - 128x128 Maps for TD use the Sole Survivor binary format which incorporates Cell number.
+
+            if (Map.MapSection.MegaMap == 0 || Constants.SoleSurvivorMapFormat == false)
             {
-                for (var x = 0; x < Map.Metrics.Width; ++x)
+                for (var y = 0; y < Map.Metrics.Height; ++y)
                 {
+                    for (var x = 0; x < Map.Metrics.Width; ++x)
+                    {
+                        /*
+                        ** Format for this is e.g. 0F 00
+                        ** Cell number = every cell gets 2 bytes in the bin file
+                        ** Template = 0x0F
+                        ** Icon = 0x00
+                        */
+                        var typeValue = reader.ReadByte();
+                        var iconValue = reader.ReadByte();
+                        var templateType = Map.TemplateTypes.Where(t => t.Equals(typeValue)).FirstOrDefault();
+                        if ((templateType != null) && !templateType.Theaters.Contains(Map.Theater))
+                        {
+                            templateType = null;
+                        }
+                        if ((templateType ?? TemplateTypes.Clear) != TemplateTypes.Clear)
+                        {
+                            if (iconValue >= templateType.NumIcons)
+                            {
+                                templateType = null;
+                            }
+                        }
+                        Map.Templates[x, y] = (templateType != null) ? new Template { Type = templateType, Icon = iconValue } : null;
+                    }
+                }
+            } else if (Map.MapSection.MegaMap == 1 && Constants.SoleSurvivorMapFormat == true)
+            {
+                for (var i = 0; i < (Map.Metrics.Height * Map.Metrics.Width); ++i)
+                {
+                    if (reader.BaseStream.Position >= reader.BaseStream.Length)
+                    {
+                        break;
+                    }
+                    /*
+                    ** Format for this is e.g. 9C 00 8D 00
+                    ** Cell number = 0x9C + (0x00 x 256)
+                    ** Template = 0x8D
+                    ** Icon = 0x00
+                    ** Any blank cells are simply not listed as the Cell number is now present.
+                    */
+
+                    // Read in the Cell number, Template Type and Template "icon" number
+                    short cell = Convert.ToInt16(reader.ReadByte() + (reader.ReadByte() * 256));
                     var typeValue = reader.ReadByte();
                     var iconValue = reader.ReadByte();
                     var templateType = Map.TemplateTypes.Where(t => t.Equals(typeValue)).FirstOrDefault();
                     if ((templateType != null) && !templateType.Theaters.Contains(Map.Theater))
                     {
-                        templateType = null;
+                       templateType = null;
                     }
                     if ((templateType ?? TemplateTypes.Clear) != TemplateTypes.Clear)
                     {
-                        if (iconValue >= templateType.NumIcons)
-                        {
-                            templateType = null;
-                        }
+                       if (iconValue >= templateType.NumIcons)
+                       {
+                          templateType = null;
+                       }
                     }
-                    Map.Templates[x, y] = (templateType != null) ? new Template { Type = templateType, Icon = iconValue } : null;
+                    
+                    // Convert the Cell number to it's X/Y coords and store the Template data.
+                    Map.Templates[(int)(((ushort)cell) & 0x7F), (int)(((ushort)cell) >> 7)] = (templateType != null) ? new Template { Type = templateType, Icon = iconValue } : null;
                 }
             }
         }
@@ -1160,23 +1207,50 @@ namespace MobiusEditor.TiberianDawn
 
         private void SaveBinary(BinaryWriter writer)
         {
-            for (var y = 0; y < Map.Metrics.Height; ++y)
+            // Megamap support - added new way to write the bin file out for large maps.
+            if (Map.MapSection.MegaMap == 0 || Constants.SoleSurvivorMapFormat == false)
             {
-                for (var x = 0; x < Map.Metrics.Width; ++x)
+                for (var y = 0; y < Map.Metrics.Height; ++y)
                 {
-                    var template = Map.Templates[x, y];
-                    if (template != null)
+                    for (var x = 0; x < Map.Metrics.Width; ++x)
                     {
-                        writer.Write((byte)template.Type.ID);
-                        writer.Write((byte)template.Icon);
+                        var template = Map.Templates[x, y];
+                        if (template != null)
+                        {
+                            writer.Write((byte)template.Type.ID);
+                            writer.Write((byte)template.Icon);
+                        }
+                        else
+                        {
+                            writer.Write(byte.MaxValue);
+                            writer.Write(byte.MaxValue);
+                        }
                     }
-                    else
+                }
+            } else if (Map.MapSection.MegaMap == 1 && Constants.SoleSurvivorMapFormat == true)
+            {
+                for (var y = 0; y < Map.Metrics.Height; ++y)
+                {
+                    for (var x = 0; x < Map.Metrics.Width; ++x)
                     {
-                        writer.Write(byte.MaxValue);
-                        writer.Write(byte.MaxValue);
+                        var template = Map.Templates[x, y];
+                        if (template != null)
+                        {
+                            // Get the Cell number from X/Y
+                            int cell = (y * Constants.MaxSize.Height) + x;
+
+                            // Need to write the Cell number as Low Byte then High Byte
+                            writer.Write((byte)(cell & 0xff ));         // cell % 256
+                            writer.Write((byte)((cell >> 8) & 0xff));   // cell / 256
+                            writer.Write((byte)template.Type.ID);
+                            writer.Write((byte)template.Icon);
+                        }
+
+                        // If this is a blank cell, nothing is written in this particular format.
                     }
                 }
             }
+
         }
 
         private void SaveMapPreview(Stream stream)
