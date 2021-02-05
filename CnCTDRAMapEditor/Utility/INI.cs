@@ -316,7 +316,7 @@ namespace MobiusEditor.Utility
                 } else if (m.Success && mapSection == true && line.ToLower() != "[map]")
                 {
                     TiberianDawn.Constants.AlterMaxSize(64, 64);
-                    break;      // Found a section after the [Map] section, so set the Size back to normal and exit the while loop.
+                    break;      // Found a section after the [Map] section without locating Version Key. So set the Size to normal and exit the while loop.
                 }
 
                 if (mapSection == true)
@@ -329,7 +329,7 @@ namespace MobiusEditor.Utility
                     var m2 = INIHelpers.KeyValueRegex.Match(line);
                     if (m2.Success)     // Found a valid Map Key.
                     {
-                        if (m2.Groups[1].Value == "MegaMap")    // Map Key is MegaMap.
+                        if (m2.Groups[1].Value == "Version")    // Map Key is Version, indicates Sole Survivor format.
                         {
                             if (m2.Groups[2].Value == "1")
                             {
