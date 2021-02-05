@@ -834,7 +834,7 @@ namespace MobiusEditor.TiberianDawn
 
             //Megamap support - 128x128 Maps for TD use the Sole Survivor binary format which incorporates Cell number.
 
-            if (Map.MapSection.MegaMap == 0 || Constants.SoleSurvivorMapFormat == false)
+            if (Map.MapSection.Version == 0 || Constants.SoleSurvivorMapFormat == false)
             {
                 for (var y = 0; y < Map.Metrics.Height; ++y)
                 {
@@ -863,7 +863,7 @@ namespace MobiusEditor.TiberianDawn
                         Map.Templates[x, y] = (templateType != null) ? new Template { Type = templateType, Icon = iconValue } : null;
                     }
                 }
-            } else if (Map.MapSection.MegaMap == 1 && Constants.SoleSurvivorMapFormat == true)
+            } else if (Map.MapSection.Version == 1 && Constants.SoleSurvivorMapFormat == true)
             {
                 for (var i = 0; i < (Map.Metrics.Height * Map.Metrics.Width); ++i)
                 {
@@ -1208,7 +1208,7 @@ namespace MobiusEditor.TiberianDawn
         private void SaveBinary(BinaryWriter writer)
         {
             // Megamap support - added new way to write the bin file out for large maps.
-            if (Map.MapSection.MegaMap == 0 || Constants.SoleSurvivorMapFormat == false)
+            if (Map.MapSection.Version == 0 || Constants.SoleSurvivorMapFormat == false)
             {
                 for (var y = 0; y < Map.Metrics.Height; ++y)
                 {
@@ -1227,7 +1227,7 @@ namespace MobiusEditor.TiberianDawn
                         }
                     }
                 }
-            } else if (Map.MapSection.MegaMap == 1 && Constants.SoleSurvivorMapFormat == true)
+            } else if (Map.MapSection.Version == 1 && Constants.SoleSurvivorMapFormat == true)
             {
                 for (var y = 0; y < Map.Metrics.Height; ++y)
                 {

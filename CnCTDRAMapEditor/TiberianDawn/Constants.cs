@@ -21,10 +21,10 @@ namespace MobiusEditor.TiberianDawn
     {
         public static readonly string SaveDirectory = Path.Combine(Globals.RootSaveDirectory, "Tiberian_Dawn");
 
-// MegaMap support - default size 64x64 but can be updated
+// MegaMap support - default size is 64x64, but can be updated.
         public static Size MaxSize = new Size(64, 64);
 
-// MegaMap support - use Sole survivor binary format for 128x128 and only 128x128.
+// MegaMap support - use the Sole Survivor binary format when saving 128x128 maps. 64x64 will always remain in their own format.
         public static readonly bool SoleSurvivorMapFormat = true;
 
         public static void AlterMaxSize(int NewWidth, int NewHeight)
