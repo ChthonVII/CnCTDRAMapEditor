@@ -1,10 +1,10 @@
 ## C&C Tiberian Dawn and Red Alert Map Editor
 
-An enhanced version of the C&C Tiberian Dawn and Red Alert Map Editor based on the source code released by Electronic Arts.
-The goal of the project is simply to improve the usability and convenience of the map editor, fix bugs, improve and clean its code-base,
+This is a fork of Rampastrings enhanced version of the C&C Tiberian Dawn and Red Alert Map Editor, based on the source code released by Electronic Arts.
+Rampastrings project was to improve the usability and convenience of the map editor, fix bugs, improve and clean its code-base,
 enhance compatibility with different kinds of systems and enhance the editor's support for mods.
 
-Once the project has proceeded far enough and I am pleased with the state of the editor, I might also look into making it support Tiberian Sun.
+This fork is to add support for creating 128x128 maps in TD.
 
 ### Current features
 
@@ -13,23 +13,26 @@ Once the project has proceeded far enough and I am pleased with the state of the
 * Fixed a couple of crashes
 * Made tool windows remember their previous position, size and other settings upon closing and re-opening them
 * Replaced drop-downs with list boxes in object type selection dialogs to allow switching between objects with fewer clicks 
+* Can now edit/create maps using the Sole Survivor binary format.
 
-This list will be kept up-to-date as more features are added.
+### Installation
 
-### Installation and usage
-
-To install, simply download a compiled build from the [Releases section of this repository](https://github.com/Rampastring/CnCTDRAMapEditor/releases)
+To install, simply download a compiled build from the [Releases section of this repository](https://github.com/screamingchicken/CnCTDRAMapEditor/releases)
 and unzip the build into a new directory.
 **Do not overwrite the original map editor that comes with the C&C Remastered Collection**. The map editor will ask for your game
 directory on first launch and then load all assets from the specified directory.
 
-If you wish to compile and run the map editor from source code, simply clone this repository and open it
-with Visual Studio 2017 or later with support for .NET desktop development installed.
+### Usage
+* Comments detailing how the Sole Survivor binary format works have been embedded in the code if anyone is interested.
+* Normal sized 64x64 maps will still use the original TD binary format.
+* 128x128 maps will use a key in their ini file which sets "Version=1"
 
-### Contributing
+### Compiling this or Rampastrings code
+1) VS2017 needs JSON, Pfim and System.ValueTuple packages
+2) It possibly needs the NETStandard package
+3) It needs the .csproj file modified to add the following line alongside the References:
+<Reference Include="netstandard" />
+4) The EA/Petro code has no comments, unless they're hidden in some way.
 
-Contributions are welcome in the scope of the project. If there's a bug that you'd like to fix or functionality that you'd like to enhance, feel free to make an issue for discussing it or a pull request if you'd want to push code.
 
-### Contact
 
-You can find me and discuss features on the Assembly Armada's [Discord server](https://discord.gg/UnWK2Tw). Note that this project is not officially affiliated with [The Assembly Armada](https://github.com/TheAssemblyArmada), but their server has become a general hub for discussing the released C&C source code and C&C reverse-engineering efforts, which provides a fitting context for this map editor.
