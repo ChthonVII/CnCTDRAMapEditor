@@ -1,8 +1,7 @@
 ## C&C Tiberian Dawn and Red Alert Map Editor
 
 This is a fork of Rampastrings enhanced version of the C&C Tiberian Dawn and Red Alert Map Editor, based on the source code released by Electronic Arts.
-Rampastrings project was to improve the usability and convenience of the map editor, fix bugs, improve and clean its code-base,
-enhance compatibility with different kinds of systems and enhance the editor's support for mods.
+Rampastrings project was to improve the usability and convenience of the map editor.
 
 This fork is to add support for creating 128x128 maps in TD.
 
@@ -34,7 +33,7 @@ directory on first launch and then load all assets from the specified directory.
 ```
 <Reference Include="netstandard" />
 ```
-4) The EA/Petro code has no comments, unless they're hidden in some way.
+4) The EA/Petro code has no comments, unless they're really hidden somehow.
 
 
 
