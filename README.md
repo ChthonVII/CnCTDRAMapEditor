@@ -31,7 +31,7 @@ directory on first launch and then load all assets from the specified directory.
 1) VS2017 needs JSON, Pfim and System.ValueTuple packages
 2) It possibly needs the NETStandard package
 3) It needs the .csproj file modified to add the following line alongside the References:
-<Reference Include="netstandard" />
+[code] <Reference Include="netstandard" /> [/code]
 
 4) The EA/Petro code has no comments, unless they're hidden in some way.
 
