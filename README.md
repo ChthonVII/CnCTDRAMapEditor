@@ -13,7 +13,7 @@ This fork is to add support for creating 128x128 maps in TD.
 * Fixed a couple of crashes
 * Made tool windows remember their previous position, size and other settings upon closing and re-opening them
 * Replaced drop-downs with list boxes in object type selection dialogs to allow switching between objects with fewer clicks 
-* Can now edit/create maps using the Sole Survivor binary format.
+* Can now edit/create TD maps in 128x128 size using the Sole Survivor binary format.
 
 ### Installation
 
