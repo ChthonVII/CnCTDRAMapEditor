@@ -32,6 +32,7 @@ directory on first launch and then load all assets from the specified directory.
 2) It possibly needs the NETStandard package
 3) It needs the .csproj file modified to add the following line alongside the References:
 <Reference Include="netstandard" />
+
 4) The EA/Petro code has no comments, unless they're hidden in some way.
 
 
