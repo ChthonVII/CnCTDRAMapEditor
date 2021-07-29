@@ -688,6 +688,7 @@ namespace MobiusEditor.TiberianDawn
             var baseSection = ini.Sections.Extract("Base");
             if (baseSection != null)
             {
+                var cellmask = (Map.MapSection.Version == 1 && Constants.SoleSurvivorMapFormat == true) ? 0x7f : 0x3f;
                 foreach (var (Key, Value) in baseSection)
                 {
                     if (int.TryParse(Key, out int priority))
@@ -699,7 +700,7 @@ namespace MobiusEditor.TiberianDawn
                             if (buildingType != null)
                             {
                                 var coord = int.Parse(tokens[1]);
-                                var location = new Point((coord >> 8) & 0x3F, (coord >> 24) & 0x3F);
+                                var location = new Point((coord >> 8) & cellmask, (coord >> 24) & cellmask);
                                 if (Map.Buildings.OfType<Building>().Where(x => x.Location == location).FirstOrDefault().Occupier is Building building)
                                 {
                                     building.BasePriority = priority;
@@ -1079,6 +1080,7 @@ namespace MobiusEditor.TiberianDawn
             var baseSection = ini.Sections.Add("Base");
             var baseBuildings = Map.Buildings.OfType<Building>().Where(x => x.Occupier.BasePriority >= 0).OrderByDescending(x => x.Occupier.BasePriority).ToArray();
             var baseIndex = baseBuildings.Length - 1;
+            var cellmask = (Map.MapSection.Version == 1 && Constants.SoleSurvivorMapFormat == true) ? 0x7f : 0x3f;
             foreach (var (location, building) in baseBuildings)
             {
                 var key = baseIndex.ToString("D3");
@@ -1086,7 +1088,7 @@ namespace MobiusEditor.TiberianDawn
 
                 baseSection[key] = string.Format("{0},{1}",
                     building.Type.Name.ToUpper(),
-                    ((location.Y & 0x3F) << 24) | ((location.X & 0x3F) << 8)
+                    ((location.Y & cellmask) << 24) | ((location.X & cellmask) << 8)
                 );
             }
             baseSection["Count"] = baseBuildings.Length.ToString();
